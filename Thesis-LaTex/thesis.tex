@@ -1,0 +1,344 @@
+%\documentclass[10pt,a4paper,usenatbib]{article} %{report}
+\documentclass[a4paper,titlepage,12pt,fleqn,oneside]{report}
+%\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{tabularx} 
+\usepackage{amssymb} 
+\usepackage{mathtools}
+%\usepackage{graphics}
+%\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{fontspec}
+%\usepackage[caption = false]{subfig}
+%\usepackage{psfig}
+%\usepackage{natbib}
+%\usepackage{cite}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{mathtools}
+\usepackage{subcaption}
+\restylefloat{table}
+\usepackage{placeins}
+\usepackage{fontspec}
+\setsansfont{XB Zar}
+
+
+\usepackage[hidelinks]{hyperref}
+\usepackage[toc,page]{appendix}
+\usepackage{lscape}
+\usepackage[top=3cm,right=3cm,bottom=2.5cm,left=2.5cm]{geometry}   
+\usepackage{xepersian}
+\settextfont[Scale=1]{XB Zar}
+\setdigitfont[Scale=1.1]{Yas}
+%\setmathdigitfont{XB Yas}
+%\defpersianfont\nastaliq{IranNastaliq}‎
+\usepackage{bidipoem}
+
+\doublespacing
+
+
+%new commands
+\DeclarePairedDelimiter{\evdel}{\langle}{\rangle}
+\newcommand{\ev}{\operatorname{}\evdel}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\order}[1]{\mathcal{O}\!\left(#1\right)}
+\newcommand{\uS}{\mathrm{s}}
+\newcommand{\uc}{\mathrm{c}}
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\bfmath}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\SNR}{SNR}
+\newcommand{\fkeyword}[1]{\par\textbf{کلید واژه‌ها:}{#1}}
+\newcommand{\lkeyword}[1]{\par\textbf{Key words: }{#1}}
+%\newcommand{\ca}[1]{{\textcolor{red}{#1}}}
+\renewcommand\bibname{References}
+\newcommand{\gu}[1]{«#1»}
+%\renewcommand{\baselinestretch}{2} 
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+%   \vspace*{\stretch{1.0}}
+   \begin{center}
+      \includegraphics[width=0.3\textwidth]{figs/logo.eps}\\
+      \vspace{0.2cm}
+      {\large دانشگاه شهید بهشتی}\\
+      {\large دانشکده فیزیک}\\
+      \vspace{0.6cm}
+      {\Large پایان‌نامه کارشناسی‌ارشد رشته فیزیک،\\ گرایش گرانش و فیزیک نجومی}\\
+      \vspace{0.6cm}
+      {\LARGE
+      \vspace{0.5cm}
+استفاده از شبکه‌های عصبی پیچشی برای آشکارسازی 
+      \vspace{0.52cm}
+ردّ ریسمان‌های کیهانی در داده‌های تابش زمینه کیهانی 
+}\\ 
+      \vspace{0.7cm}
+      {\large نگارنده:}\\
+      {\Large مطهره ترکی}\\
+      \vspace{0.5cm}
+      {\large استاد راهنما:}\\
+      {\Large  مرضیه فرهنگ}\\
+      \vspace{0.5cm}
+      {\large استاد مشاور:}\\
+      {\Large  علیرضا وفایی‌صدر}\\
+      \vspace{1cm}
+      {\large  شهریور ۹۹} \\
+      \vspace{0.5cm}
+   \end{center}
+%   \vspace*{\stretch{2.0}}
+\end{titlepage}
+
+%\begin{figure}
+
+%\includegraphics[width=0.3\textwidth]{figs/besmellah1.pdf}
+%\end{figure}
+%\thispagestyle{empty}
+ 
+%\listoffigures
+ 
+%\listoftables
+
+\newpage
+\begin{center}
+{\Huge
+%{\nastaliq
+	بسم اللّه الرحمن الرحیم
+%}
+
+}
+\end{center}
+\newpage
+\begin{center}
+{\Huge
+قدردانی
+}
+\end{center}
+\vspace{2.5cm}
+\par
+
+\begin{center}
+	\begin{minipage}{\textwidth}
+		\begin{traditionalpoem}
+			
+			ای نام تو بهترین سرآغاز 								&
+			
+			بی نام تو نامه کی کنم باز \\
+			
+			ای بر ورق تو درس ایام 		 				 			& 
+			
+			ز آغاز رسیده تا به انجام	 \\
+			
+			صاحب تویی آن دگر غلامند	    	 			 			&
+			
+			سلطان تویی آن دگر کدامند؟ 		 \\
+			
+			ترتیب جهان چنانکه بایست    				   				&
+			
+			کردی به مثابتی که شایست \\
+			
+			گر هفت گره به چرخ دادی  								&
+			
+			هفتاد گره بدو گشادی \\
+			
+			خاکستری ار ز خاک سودی 									&
+			
+			صد آینه را بدان زدودی \\
+			
+			
+			من بیدل و راه، بیم‌ناک است 							&
+			
+			چون راهنما تویی چه باک است \\
+			
+						\\
+			& 
+			\hspace{45pt}
+			نظامی‌گنجوی
+		\end{traditionalpoem}
+	\end{minipage}
+\end{center}
+\vspace{0.5cm}
+از استادان عزیزم،‌ دکتر مرضیه فرهنگ و دکتر علیرضا وفایی‌صدر که از ایشان بسیار آموخته‌ام، برای همه الطاف و حمایت‌های بی‌دریغشان سپاسگزارم و از خدای متعال برای ایشان سلامت و سعادت آرزومندم... 
+\\
+همواره قدردان خانواده مهربانم به خاطر همه عشقی که به من می‌دهند هستم. هم‌چنین از همه دوستانم ممنونم، بالاخص از دوست و همکار عزیزم هاله حاجی‌زاده که تجربه شیرینی از کار گروهی برای من رقم زد.     
+
+
+
+\newpage
+
+
+\begin{abstract}
+ریسمان‌های کیهانی یکی از مهم‌ترین نقیصه‌های توپولوژیکی هستند که ممکن است در کیهان اولیه و در اثر شکست تقارن ناشی از پایین آمدن دما تشکیل شده باشند. تنش یا $G\mu$ در ریسمان کمیتی بی بُعد و معرف انرژی بر واحد طول ریسمان است .  
+به دلیل وجود ریسمان‌های کیهانی، الگوهای خط-گون در تابش زمینه کیهانی ایجاد می‌شود که اثر گات-کایزر-استبینز است. ما در این تحقیق به دنبال پاسخ سوالات زیر هستیم:
+\\
+کوچکترین تنش ریسمانی که قابل تشخیص در تابش زمینه است چه مقدار است؟ و آیا می‌توان اثر ریسمان در تابش زمینه را آشکارسازی کرد؟ و اگر نمی‌شود، حد بالای تنش ریسمان موجود در تابش زمینه چقدر است؟ برای این منظور ما از شبکه‌های عصبی پیچشی (CNN) که ابزاری مهم در علم داده و یادگیری عمیق اند و به صورت گسترده در تشخیص الگوها در تصاویر به کار می‌روند استفاده می‌کنیم.
+\par 
+در ابتدا با استفاده از داده‌های شبیه‌سازی تابش زمینه  و شبیه‌سازی‌های شبکه ریسمانی و برهم‌نهی این دو اثر نقشه‌های تابش زمینه در حضور ریسمان را می‌سازیم. اثر دهانه تلسکوپ و نوفه رصدی را نیز اضافه می‌کنیم. برای آموزش ماشین نقشه‌های شبیه‌سازی شده را به عنوان ورودی، و $G\mu$  متناظر با آن نقشه را به عنوان خروجی به یک شبکه عصبی پیچشی می‌دهیم. فرآیند آموزش ماشین را بر روی ۳ دسته از شبیه‌سازی‌های متداول تابش زمینه کیهانی، یعنی رصدهای نسل چهارم، تلسکوپ آتاکاما و شبیه‌سازی‌های شبه پلانک  
+(\lr{FFP10} و \lr{E2E})
+انجام می‌دهیم. نتایج نشان می‌دهد کمترین تنش قابل آشکارسازی در داده‌های شبیه‌سازی
+\lr{End-to-End}
+که دقیق‌ترین شبیه‌سازی و شبیه‌ترین به داده‌های رصدی پلانک ۲۰۱۸ هستند، مقدار 
+$G\mu \geq 8.9\times 10^{-7}$ 
+است. 
+\par 
+نتیجه ما برای داده‌های دمایی پلانک ۲۰۱۸، مطابق با عدم مشاهده ریسمان است. بنابراین حد بالای تنش ریسمان در داده‌های پلانک 
+ $G\mu \leq 8.9\times 10^{-7}$  
+است.
+ \\
+\fkeyword{
+تابش زمینه کیهانی، ریسمان‌های کیهانی، شبیه‌سازی، یادگیری عمیق، شبکه عصبی پیچشی
+}
+
+
+\end{abstract}
+
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+
+\newpage
+\setcounter{footnote}{0}
+\chapter{پیشگفتار}
+\input{sections/preface}
+
+\newpage
+\setcounter{footnote}{0}
+\chapter{ تابش زمینه‌ی کیهان (CMB)}
+\label{ch:cmb}
+\input{sections/CMB}
+
+\newpage
+\setcounter{footnote}{0}
+\chapter{ریسمان‌های کیهانی}
+\label{ch:cosmic_string}
+\input{sections/cosmic_strings}
+
+\newpage
+\setcounter{footnote}{0}
+\chapter{علم داده و یادگیری عمیق}
+\label{ch:deep_learning}
+\input{sections/machine_learning}
+
+\protect\footnotemark
+%}
+%\footnotetext{
+%نتایج این فصل بر اساس مقاله‌ی 
+%\cite{vafaei2017multiscale}
+%ارائه شده‌ است.
+%}
+\newpage
+\setcounter{footnote}{0}
+\chapter{ شبیه‌سازی‌ها و داده رصدی}
+\label{ch:simulations}
+\input{sections/simulations}
+
+\newpage
+\setcounter{footnote}{0}
+\chapter{آشکارسازی شبکه ریسمان‌های کیهانی در CMB}
+\label{ch:detection_pipeline}
+\input{sections/detection_pipeline}
+
+\newpage
+\setcounter{footnote}{0}
+\chapter{بحث و جمع‌بندی}
+\label{ch:conclusion}
+\input{sections/conclusion}
+
+%% APPENDICES
+%\addcontentsline{toc}{chapter}{پیوست‌ها}
+%\begin{appendix}
+%	
+%	\chapter{}
+%	\label{ccgpack}
+%	\input{sections/ccgpack}
+%	
+%	%\chapter{بسته‌های نرم‌افزاری استفاده شده}
+%	%\label{packs}
+%	%\input{sections/packs}
+%	
+%	\chapter{ابزار‌های تحلیل مقیاسی}
+%	\label{img_hist}
+%	\input{sections/image_process}
+%	
+%\end{appendix}
+	
+\chapter{مراجع}
+
+\begin{latin}
+\bibliographystyle{ieeetr}
+\bibliography{bib}
+\end{latin}
+
+\newpage
+\begin{latin}
+\begin{abstract}
+Cosmic strings are one of the most important topological defects that may have formed in the early universe due to symmetry breaking. Tension or $G\mu$ of string is a dimensionless quantity that represents energy per unit length.     
+Due to the strings existence, line-like patterns in the CMB is formed which known as the Gott-Kaiser-Stebbins effect. In this research we are trying to answer the following questions: \\ 
+What is the smallest string tension which can be detected in the CMB? And if it is not possible to detect one, what is the upper bound of string tension in the background radiation? For this purpose, we use Convolutional neural networks (CNNs), which are important tools in data science and deep learning which are widely used in pattern recognition in images.
+\par
+First, we simulate cosmic strings induced CMB maps. We also add the telescope beam and observational noise.
+For training, we feed the machine with simulated maps and give the corresponding $G\mu$  as output to a CNN.
+We used 3 common simulations of CMB: ACT-like, CMB-S4-like, and the Planck simulations (FFP10 , E2E). The results show that the minimum detectable tension in End-to-End maps, which are the most similar simulations to \textit{Planck 2018} observational data, is
+$ G\mu \geq 8.9 \times 10^{-7} $
+\par
+For \textit{Planck 2018} data, the results is consistent with no string detection. So the upper bound of string tension in the \textit{Planck 2018} CMB temperature is
+$ G\mu \leq 8.9 \times 10^{-7} $ .
+
+\lkeyword{Cosmic Microwave Background, Cosmic string, Simulation, Deep learning, Convolutional Neural Networks}
+
+\end{abstract}
+\end{latin}
+
+
+\begin{titlepage}
+\begin{latin}
+%   \vspace*{\stretch{1.پ0}}
+   \begin{center}پ
+      \includegraphics[width=0.3\textwidth]{figs/logo.eps}\\
+      \vspace{0.2cm}
+      {\Large Shahid Beheshti University}\\
+      {\Large Faculty of Physics}\\
+      \vspace{1.3cm}
+      {A thesis submitted in partial fulfillment for the degree of M.Sc.}\\
+      {(Gravity and Cosmology)}\\
+      \vspace{0.7cm}
+      {\LARGE
+         Convolutional Neural Networks in the Search of Cosmic Strings in CMB data} \\
+
+      \vspace{0.5cm}
+      {\Large by :}\\
+      {\Large Motahare Torki}\\
+      \vspace{0.5cm}
+      {\Large Supervisor :}\\
+      {\Large Marzieh Farhang}\\
+      \vspace{0.5cm}
+      {\Large Advisor :}\\
+      {\Large Alireza Vafaei Sadr}\\
+      \vspace{0.5cm}
+      {\Large 2020} \\
+      \vspace{0.5cm}
+   \end{center}
+%   \vspace*{\stretch{2.0}}
+\end{latin}
+\end{titlepage}
+
+%\PrepareForLatinPages
+%\date{October 6, 2011}
+%\title{\sffamily Thesis Class in XeLaTeX}
+%\author{\sffamily Mohsen SHARIFI TABAR}
+%\university{Sharif University of Technology\\Department of Mathematical Sciences}
+%\subject{Pure Mathematics}
+%\supervisor{\sffamily Dr. Supervisor}
+%\consult{\sffamily Dr. Consult}
+%\begin{abstract}{first latin keyword, second latin keyword, third latin keyword.}
+%There is no special abstract for this thesis.
+%\end{abstract}
+%\makethesistitle
+\end{document}

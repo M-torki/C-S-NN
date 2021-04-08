@@ -1,0 +1,457 @@
+
+
+\section{نتایج آموزش ماشین روی داده‌های شبیه‌سازی }
+\label{sec:results}
+
+مطابق روشی که در این فصل شرح داده شد و پس از آن که به یک معماری بهینه برای شبکه پیچشی رسیدیم، شبکه را برای انواع شبیه‌سازی‌هایی که در این تحقیق مدّ نظر است به صورت جداگانه آموزش دادیم. پس از اجرای فرآیند آموزش، متناظر با هر دسته شبیه‌سازی به یک مدل نهایی دست پیدا کردیم. برای گزارش دقت هر مدل و حدی از تنش ریسمان که ماشین قادر به دیدن و تشخیص آن است از دو معیار مقدار پی و ماتریس درهم‌ریختگی استفاده کرده‌ایم که متناظر با هر کدام از این معیارها ۲ کمیت معرفی می‌کنیم:
+\begin{description}
+	\item
+	کمینه قابل اندازه‌گیری یا $G\mu_{mes}$:\\
+	این کمیت برای ماتریس درهم‌ریختگی تنشی است که ماشین با $\%$۹۵ دقت ($\sigma$2) توانایی تشخیص و اندازه‌گیری آن را دارد. این مقدار در ماتریس معادل کلاسی است که آرایه روی قطر متناظر با آن $\%$۹۵ باشد. از آن‌جایی که مقادیر روی قطر گاهی کمی کمتر یا بیشتر از $\%$۹۵ هستند برای به دست آوردن حدود تنشی که دقت اندازه‌گیری آن دقیقا مساوی ۹۵ شود مقادیر روی قطر ماتریس را درون‌یابی می‌کنیم. در اینجا ما برای ساده‌سازی فرض می‌کنیم که رفتار تابع خطی است.
+	علاوه بر ماتریس درهم‌ریختگی، حد کمینه قابل اندازه‌گیری را می‌توان با اطلاعات مقادیر پی برای کلاس‌های مختلف به دست آورد. طبق تعریف ما مقدار تنشی که قابل اندازه گیری است لزوما باید از تمام کلاس‌های دیگر قابل تمایز باشد. یعنی مقدار پی بین توزیع مربوط به این مقدار کمینه و توزیع تمام کلاس‌های دیگر کمتر از ۰/۰۵ باشد که معادل دقت $\sigma$2 است. همانند روش به دست آوردین کمینه قابل اندازه‌گیری با ماتریس، برای محاسبه مقدار دقیق این حد با مقدار پی باید درون‌یابی انجام دهیم.     
+	\item
+	کمینه قابل آشکارسازی یا $G\mu_{det}$:\\
+	آشکارسازی به معنای تشخیص دادن نقشه‌های ریسمان‌دار از نقشه‌ی پوچ و بدون ریسمان است. مشابه حد قابل اندازه‌گیری، این حد را هم از دو منظر ماتریس درهم‌ریختگی و مقدار پی به دست می‌آوریم. از منظر ماتریس درهم‌ریختگی، حد قابل آشکارسازی مقدار تنشی است که کمتر از $\%$۵ نمونه‌های مربوط به آن با کلاس پوچ یا صفر توسط ماشین اشتباه گرفته شده باشد. به عبارتی مقادیر ستون اول در ماتریس برای ما مهم است. اولین کلاسی که آرایه مربوط به آن در ستون اول کوچکتر یا مساوی ۰/۰۵ باشد حد قابل آشکارسازی را مشخص می‌کند. برخلاف قبل که گفتیم مقادیر را درون‌یابی کرده‌ایم، برای این حد به گزارش برچسب کلاس مربوطه اکتفا می‌کنیم. حد قابل آشکارسازی توسط مقادیر پی نیز قابل محاسبه است. برای این کار توزیع پیش‌بینی‌های مربوط به هر کلاس را با توزیع پیش‌بینی‌های کلاس صفر یا پوچ مقایسه می کنیم و مقدار پی مربوطه را به دست می‌آوریم. آستانه مورد نظر در این مورد هم دقت $\sigma$2 یا همان مقدار پی ۰/۰۵ است.   	    
+\end{description}
+در بخش بعدی حدود قابل اندازه‌گیری و حدود قابل آشکارسازی را برای ۷ حالت شبیه‌سازی مختلفی که بررسی کرده‌ایم بیان خواهیم کرد. ماتریس در‌هم‌ریختگی و نمودار‌های مربوط به مقدار پی نیز برای همه شبیه‌سازی‌ها آورده شده است.    
+%-------------------------------------------------------------------------
+\subsection{حدود قابل اندازه‌گیری و قابل آشکارسازی به دست آمده}
+\label{subsec:upper_bounds}
+
+\begin{itemize}
+	\item 
+	شبیه‌سازی\textbf{
+		CMB-S4-like(II)}
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_m_s4ii.png}
+			\caption{   کمینه تنش قابل اندازه‌گیری برای شبیه‌سازی 
+				\\	CMB-S4-like(I)
+				بر اساس آماره \lr{P\;value}}
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_d_s4ii.png}
+			\caption{  کمینه تنش قابل آشکارسازی برای شبیه‌سازی 
+				\\ CMB-S4-like(II)
+				بر اساس آماره \lr{P\;value} }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{حدود قابل اندازه‌گیری و آشکارسازی برای شبیه‌سازی 
+			CMB-S4-like(II)
+			به وسیله درون‌یابی مقادیر 
+			\lr{P\;value}.}
+		\label{fig:s4i_cm}
+	\end{figure}
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[scale=0.7]{figs/cm_s4ii.png}
+			\caption{  ماتریس درهم‌ریختگی برای شبیه‌سازی 
+				CMB-S4-like(II) }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width=\textwidth , height=0.22\textheight]{figs/cm_m_s4ii.png}
+			\caption{  کمینه تنش قابل اندازه‌گیری توسط ماشین برای شبیه‌سازی 
+				CMB-S4-like(II) }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{ماتریس در هم ریختگی برای دسته‌بندی داده‌های شبیه‌سازی
+			CMB-S4-like(I)
+			و به دست آوردن حد کمینه قابل اندازه‌گیری توسط ماشین از روی این ماتریس به وسیله درون‌یابی عناصر قطر.}
+		\label{fig:s4i_pv}
+	\end{figure}
+	
+	
+	
+	%-------------------------------------------------------------------------
+	\item 
+	شبیه‌سازی
+	CMB-S4-like(I)
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_m_s4i.png}
+			\caption{   کمینه تنش قابل اندازه‌گیری برای شبیه‌سازی 
+				\\	CMB-S4-like(I)
+				بر اساس آماره \lr{P\;value}}
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_d_s4i.png}
+			\caption{  کمینه تنش قابل آشکارسازی برای شبیه‌سازی 
+				\\ CMB-S4-like(I)
+				بر اساس آماره \lr{P\;value} }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{حدود قابل اندازه‌گیری و آشکارسازی برای شبیه‌سازی 
+			CMB-S4-like(I)
+			به وسیله درون‌یابی مقادیر 
+			\lr{P\;value}.}
+		\label{fig:s4i_cm}
+	\end{figure}
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[scale=0.7]{figs/cm_s4i.png}
+			\caption{  ماتریس درهم‌ریختگی برای شبیه‌سازی 
+				CMB-S4-like(I) }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width=\textwidth , height=0.22\textheight]{figs/cm_m_s4i.png}
+			\caption{  کمینه تنش قابل اندازه‌گیری توسط ماشین برای شبیه‌سازی 
+				CMB-S4-like(I) }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{ماتریس در هم ریختگی برای دسته‌بندی داده‌های شبیه‌سازی
+			CMB-S4-like(I)
+			و به دست آوردن حد کمینه قابل اندازه‌گیری توسط ماشین از روی این ماتریس به وسیله درون‌یابی عناصر قطر.}
+		\label{fig:s4i_pv}
+	\end{figure}
+	
+	
+	
+	
+	%-------------------------------------------------------------------------
+	
+	\item 
+	شبیه‌سازی  ACT-like
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_m_act.png}
+			\caption{   کمینه تنش قابل اندازه‌گیری برای شبیه‌سازی 
+				\\	ACT-like
+				بر اساس آماره \lr{P\;value} }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_d_act.png}
+			\caption{  کمینه تنش قابل آشکارسازی برای شبیه‌سازی 
+				\\ ACT-like
+				بر اساس آماره 
+				\lr{P\;value}. }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{حدود قابل اندازه‌گیری و آشکارسازی برای شبیه‌سازی 
+			ACT-like
+			به وسیله درون‌یابی مقادیر 
+			\lr{P\;value}.}
+		\label{fig:act_cm}
+	\end{figure}
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[scale=0.7]{figs/cm_act.png}
+			\caption{  ماتریس درهم‌ریختگی برای شبیه‌سازی 
+				ACT-like }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width=\textwidth , height=0.22\textheight]{figs/cm_m_act.png}
+			\caption{  کمینه تنش قابل اندازه‌گیری توسط ماشین برای شبیه‌سازی 
+				ACT-like }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{ماتریس در هم ریختگی برای دسته‌بندی داده‌های شبیه‌سازی
+			ACT-like
+			و به دست آوردن حد کمینه قابل اندازه‌گیری توسط ماشین از روی این ماتریس به وسیله درون‌یابی عناصر قطر.}
+		\label{fig:act_pv}
+	\end{figure}
+	
+	
+	%-------------------------------------------------------------------------
+	
+	\item 
+	شبیه‌سازی  FFP10
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_m_ffp.png}
+			\caption{   کمینه تنش قابل اندازه‌گیری برای شبیه‌سازی 
+				\\	FFP10 
+				بدون نوفه بر اساس آماره 
+				\lr{P\;value}. }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_d_ffp.png}
+			\caption{  کمینه تنش قابل آشکارسازی برای شبیه‌سازی 
+				\\	FFP10 
+				بدون نوفه بر اساس آماره 
+				\lr{P\;value}. }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{حدود قابل اندازه‌گیری و آشکارسازی برای شبیه‌سازی 
+			FFP10 
+			بدون نوفه به وسیله درون‌یابی مقادیر 
+			\lr{P\;value}.}
+		\label{fig:ffp_cm}
+	\end{figure}
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_m_nffp.png}
+			\caption{   کمینه تنش قابل اندازه‌گیری برای شبیه‌سازی 
+				\\	FFP10 
+				بر اساس آماره 
+				\lr{P\;value} }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_d_nffp.png}
+			\caption{  کمینه تنش قابل آشکارسازی برای شبیه‌سازی 
+				\\	FFP10 
+				بر اساس آماره 
+				\lr{P\;value} }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{حدود قابل اندازه‌گیری و آشکارسازی برای شبیه‌سازی 
+			FFP10 
+			به وسیله درون‌یابی مقادیر 
+			\lr{P\;value}.}
+		\label{fig:nffp_cm}
+	\end{figure}
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[scale=0.7]{figs/cm_ffp.png}
+			\caption{  ماتریس درهم‌ریختگی برای شبیه‌سازی 
+				FFP10 
+				بدون نوفه }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width=\textwidth , height=0.22\textheight]{figs/cm_m_ffp.png}
+			\caption{  کمینه تنش قابل اندازه‌گیری توسط ماشین برای شبیه‌سازی 
+				FFP10 
+				بدون نوفه }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{ماتریس در هم ریختگی برای دسته‌بندی داده‌های شبیه‌سازی
+			FFP10 
+			بدون نوفه و به دست آوردن حد کمینه قابل اندازه‌گیری توسط ماشین از روی این ماتریس به وسیله درون‌یابی عناصر قطر.}
+		\label{fig:ffp_pv}
+	\end{figure}
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[scale=0.7]{figs/cm_nffp.png}
+			\caption{  ماتریس درهم‌ریختگی برای شبیه‌سازی 
+				FFP10 
+			}
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width=\textwidth , height=0.22\textheight]{figs/cm_m_nffp.png}
+			\caption{  کمینه تنش قابل اندازه‌گیری توسط ماشین برای شبیه‌سازی 
+				FFP10 
+			}
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{ماتریس در هم ریختگی برای دسته‌بندی داده‌های شبیه‌سازی
+			FFP10 
+			و به دست آوردن حد کمینه قابل اندازه‌گیری توسط ماشین از روی این ماتریس به وسیله درون‌یابی عناصر قطر.}
+		\label{fig:nffp_pv}
+	\end{figure}
+	
+	%-------------------------------------------------------------------------
+	
+	\item 
+	شبیه‌سازی End-to-End
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_m_e2eless.png}
+			\caption{   کمینه تنش قابل اندازه‌گیری برای شبیه‌سازی 
+				\\			$E2E$
+				بدون نوفه بر اساس آماره
+				\lr{P\;value} }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_d_e2eless.png}
+			\caption{  کمینه تنش قابل آشکارسازی برای شبیه‌سازی 
+				\\ 		$E2E$
+				بدون نوفه بر اساس آماره 
+				\lr{P\;value}	
+			}
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{حدود قابل اندازه‌گیری و آشکارسازی برای شبیه‌سازی 
+			$E2E$
+			بدون نوفه به وسیله درون‌یابی مقادیر 
+			\lr{P\;value}.}
+		\label{fig:e2eless_cm}
+	\end{figure}
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_m_nsye2e.png}
+			\caption{   کمینه تنش قابل اندازه‌گیری برای شبیه‌سازی 
+				\\			$E2E$
+				بر اساس آماره
+				\lr{P\;value} }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_d_nsye2e.png}
+			\caption{  کمینه تنش قابل آشکارسازی برای شبیه‌سازی 
+				\\ 		$E2E$
+				بر اساس آماره 
+				\lr{P\;value}	
+			}
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{حدود قابل اندازه‌گیری و آشکارسازی برای شبیه‌سازی 
+			$E2E$
+			به وسیله درون‌یابی مقادیر 
+			\lr{P\;value}.}
+		\label{fig:act_nsyE2E}
+	\end{figure}
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[scale=0.7]{figs/cm_e2eless.png}
+			\caption{  ماتریس درهم‌ریختگی برای شبیه‌سازی 
+				$E2E$
+				بدون نوفه }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width=\textwidth , height=0.22\textheight]{figs/cm_m_e2eless.png}
+			\caption{  کمینه تنش قابل اندازه‌گیری توسط ماشین برای شبیه‌سازی 
+				$E2E$
+				بدون نوفه }
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{ماتریس در هم ریختگی برای دسته‌بندی داده‌های شبیه‌سازی
+			$E2E$
+			بدون نوفه 
+			و به دست آوردن حد کمینه قابل اندازه‌گیری توسط ماشین از روی این ماتریس به وسیله درون‌یابی عناصر قطر.}
+		\label{fig:E2Eless_pv}
+	\end{figure}
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[scale=0.7]{figs/cm_nsye2e.png}
+			\caption{  ماتریس درهم‌ریختگی برای شبیه‌سازی 
+				$E2E$
+			}
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width=\textwidth , height=0.22\textheight]{figs/cm_m_nsye2e.png}
+			\caption{  کمینه تنش قابل اندازه‌گیری توسط ماشین برای شبیه‌سازی 
+				$E2E$
+			}
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{ماتریس در هم ریختگی برای دسته‌بندی داده‌های شبیه‌سازی
+			$E2E$
+			و به دست آوردن حد کمینه قابل اندازه‌گیری توسط ماشین از روی این ماتریس به وسیله درون‌یابی عناصر قطر.
+		}
+		\label{fig:nsyE2E_cm}
+	\end{figure}
+	
+	%------------------------
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_m_nsye2e.png}
+			\caption{   کمینه تنش قابل اندازه‌گیری برای شبیه‌سازی 
+				\\			$E2E$
+				بر اساس آماره
+				\lr{P\;value} }
+			%		\label{fig:sub1}
+		\end{subfigure}%
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figs/pv_d_nsye2e.png}
+			\caption{  کمینه تنش قابل آشکارسازی برای شبیه‌سازی 
+				\\ 		$E2E$
+				بر اساس آماره 
+				\lr{P\;value}	
+			}
+			%		\label{fig:sub2}
+		\end{subfigure}
+		
+		\caption{حدود قابل اندازه‌گیری و آشکارسازی برای شبیه‌سازی 
+			$E2E$
+			به وسیله درون‌یابی مقادیر 
+			\lr{P\;value}.}
+		\label{fig:nsyE2E_pv}
+	\end{figure}
+	
+	
+	%-------------------------------------------------------------------------
+	
+\end{itemize}
+

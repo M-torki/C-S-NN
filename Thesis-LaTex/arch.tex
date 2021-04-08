@@ -1,0 +1,757 @@
+\documentclass[border=8pt, multi, tikz]{standalone} 
+\usepackage{import}
+\subimport{../layers/}{init}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d} %for including external image 
+
+\def\ConvColor{rgb:yellow,5;red,2.5;white,5}
+\def\BNColor{rgb:yellow,1;red,2.5;white,5}
+\def\ConvReluColor{rgb:yellow,5;red,5;white,5}
+\def\PoolColor{rgb:red,1;black,0.3}
+\def\UnpoolColor{rgb:blue,2;green,1;black,0.3}
+\def\FcColor{rgb:blue,5;red,2.5;white,5}
+\def\FcReluColor{rgb:blue,5;red,5;white,4}
+\def\SoftmaxColor{rgb:magenta,5;black,7}   
+
+\newcommand{\copymidarrow}{\tikz \draw[-Stealth,line width=0.8mm,draw={rgb:blue,4;red,1;green,1;black,3}] (-0.3,0) -- ++(0.3,0);}
+
+\begin{document}
+	\begin{tikzpicture}
+
+\tikzstyle{connection}=[thick,every node/.style={sloped,allow upside down},draw=\edgecolor,opacity=0.7]
+\tikzstyle{copyconnection}=[ultra thick,every node/.style={sloped,allow upside down},draw={rgb:blue,4;red,1;green,1;black,3},opacity=0.7]
+
+\node[canvas is zy plane at x=0] (temp) at (-6,1,0) {\includegraphics[width= 30cm ,height=25.5cm]{./1-0.jpg}};
+
+\node[canvas is zy plane at x=0] (temp) at (-1,1,0) {\includegraphics[width= 30cm ,height=25.5cm]{./2-0.jpg}};	
+
+\pic[shift={(0,0,0)}] at (3,0,0) 
+{Box={
+		name=cvl1,
+%		caption= conv ,
+		xlabel={{4, }},
+		zlabel=256,
+		fill=\ConvColor,
+		opacity=1,
+		height=128,
+		width=4,
+		depth=128
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl1-east) 
+{Box={
+		name=bnl1,
+%		caption= 256 ,
+		xlabel={{4, }},
+		zlabel=256,
+		fill=\BNColor,
+		height=128,
+		width=4,
+		depth=128
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl1-east) 
+{Box={
+		name=act1,
+%		caption= cRelu,
+		xlabel={{8, }},
+		zlabel=256,
+		fill=\ConvReluColor,
+		height=128,
+		width=8,
+		depth=128
+	}
+};
+\pic[shift={(1,0,0)}] at (act1-east) 
+{Box={
+		name=cvl2,
+%		caption= conv ,
+		xlabel={{4, }},
+		zlabel=256,
+		fill=\ConvColor,
+		opacity=1,
+		height=128,
+		width=4,
+		depth=128
+	}
+};
+
+\pic[shift={(0,0,0)}] at (cvl2-east) 
+{Box={
+		name=bnl2,
+%		caption= 256 ,
+		xlabel={{4, }},
+		zlabel=256,
+		fill=\BNColor,
+		height=128,
+		width=4,
+		depth=128
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl2-east) 
+{Box={
+		name=act2,
+%		caption= cRelu,
+		xlabel={{8, }},
+		zlabel=256,
+		fill=\ConvReluColor,
+		height=128,
+		width=8,
+		depth=128
+	}
+};
+
+
+\pic[shift={(1,0,0)}] at (act2-east) 
+{Box={
+		name=cvl3,
+%		caption= conv ,
+		xlabel={{4, }},
+		zlabel=256,
+		fill=\ConvColor,
+		opacity=1,
+		height=128,
+		width=4,
+		depth=128
+	}
+};
+
+\pic[shift={(0,0,0)}] at (cvl3-east) 
+{Box={
+		name=bnl3,
+%		caption= 256,
+		xlabel={{4, }},
+		zlabel=256,
+		fill=\BNColor,
+		height=128,
+		width=4,
+		depth=128
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl3-east) 
+{Box={
+		name=act3,
+%		caption= cRelu,
+		xlabel={{8, }},
+		zlabel=256,
+		fill=\ConvReluColor,
+		height=128,
+		width=8,
+		depth=128
+	}
+};
+
+\pic[shift={(1,0,0)}] at (act3-east) 
+{Box={
+		name=cvl4,
+%		caption= conv ,
+		xlabel={{4, }},
+		zlabel=256,
+		fill=\ConvColor,
+		opacity=1,
+		height=128,
+		width=4,
+		depth=128
+	}
+};
+
+\pic[shift={(0,0,0)}] at (cvl4-east) 
+{Box={
+		name=bnl4,
+%		caption= 256 ,
+		xlabel={{4, }},
+		zlabel=256,
+		fill=\BNColor,
+		height=128,
+		width=4,
+		depth=128
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl4-east) 
+{Box={
+		name=act4,
+%		caption= cRelu,
+		xlabel={{8, }},
+		zlabel=256,
+		fill=\ConvReluColor,
+		height=128,
+		width=8,
+		depth=128
+	}
+};
+\pic[shift={(1,0,0)}] at (act4-east) 
+{Box={
+		name=cvl5,
+%		caption= conv ,
+		xlabel={{8, }},
+		zlabel=256,
+		fill=\ConvColor,
+		opacity=1,
+		height=128,
+		width=8,
+		depth=128
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl5-east) 
+{Box={
+		name=bnl5,
+%		caption= 256 ,
+		xlabel={{8, }},
+		zlabel=256,
+		fill=\BNColor,
+		height=128,
+		width=8,
+		depth=128
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl5-east) 
+{Box={
+		name=act5,
+%		caption= cRelu,
+		xlabel={{16, }},
+		zlabel=256,
+		fill=\ConvReluColor,
+		height=128,
+		width=16,
+		depth=128
+	}
+};
+\pic[shift={(1,0,0)}] at (act5-east) 
+{Box={
+		name=cvl6,
+%		caption= conv ,
+		xlabel={{16, }},
+		zlabel=128,
+		fill=\ConvColor,
+		opacity=1,
+		height=85,
+		width=16,
+		depth=85
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl6-east) 
+{Box={
+		name=bnl6,
+%		caption= 128 ,
+		xlabel={{16, }},
+		zlabel=128,
+		fill=\BNColor,
+		height=85,
+		width=16,
+		depth=85
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl6-east) 
+{Box={
+		name=act6,
+%		caption= cRelu,
+		xlabel={{32, }},
+		zlabel=128,
+		fill=\ConvReluColor,
+		height=85,
+		width=32,
+		depth=85
+	}
+};
+\pic[shift={(0.0,0,0)}] at (act6-east) 
+{Box={
+		name=pool6,
+%		caption= 128,
+		xlabel={{32, }},
+		zlabel=127,
+		fill=\PoolColor,
+		height=84,
+		width=32,
+		depth=84
+	}
+};
+\pic[shift={(1,0,0)}] at (pool6-east) 
+{Box={
+		name=cvl7,
+%		caption= conv ,
+		xlabel={{8, }},
+		zlabel=127,
+		fill=\ConvColor,
+		opacity=1,
+		height=84,
+		width=8,
+		depth=84
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl7-east) 
+{Box={
+		name=bnl7,
+%		caption= 128 ,
+		xlabel={{8, }},
+		zlabel=127,
+		fill=\BNColor,
+		height=84,
+		width=8,
+		depth=84
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl7-east) 
+{Box={
+		name=act7,
+%		caption= cRelu,
+		xlabel={{16, }},
+		zlabel=127,
+		fill=\ConvReluColor,
+		height=84,
+		width=16,
+		depth=84
+	}
+};	
+
+\pic[shift={(1,0,0)}] at (act7-east) 
+{Box={
+		name=cvl8,
+%		caption= conv ,
+		xlabel={{16, }},
+		zlabel=64,
+		fill=\ConvColor,
+		opacity=1,
+		height=64,
+		width=16,
+		depth=64
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl8-east) 
+{Box={
+		name=bnl8,
+%		caption= 64 ,
+		xlabel={{16, }},
+		zlabel=64,
+		fill=\BNColor,
+		height=64,
+		width=16,
+		depth=64
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl8-east) 
+{Box={
+		name=act8,
+%		caption= cRelu,
+		xlabel={{32, }},
+		zlabel=64,
+		fill=\ConvReluColor,
+		height=64,
+		width=32,
+		depth=64
+	}
+};
+\pic[shift={(0.0,0,0)}] at (act8-east) 
+{Box={
+		name=pool8,
+%		caption= MaxPool,
+		xlabel={{32, }},
+		zlabel=63,
+		fill=\PoolColor,
+		height=63,
+		width=32,
+		depth=63
+	}
+};
+
+\pic[shift={(1,0,0)}] at (pool8-east) 
+{Box={
+		name=cvl9,
+%		caption= conv ,
+		xlabel={{8, }},
+		zlabel=63,
+		fill=\ConvColor,
+		opacity=1,
+		height=63,
+		width=8,
+		depth=63
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl9-east) 
+{Box={
+		name=bnl9,
+%		caption= 64 ,
+		xlabel={{8, }},
+		zlabel=63,
+		fill=\BNColor,
+		height=63,
+		width=8,
+		depth=63
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl9-east) 
+{Box={
+		name=act9,
+%		caption= cRelu,
+		xlabel={{16, }},
+		zlabel=63,
+		fill=\ConvReluColor,
+		height=63,
+		width=16,
+		depth=63
+	}
+};
+\pic[shift={(1,0,0)}] at (act9-east) 
+{Box={
+		name=cvl10,
+%		caption= conv ,
+		xlabel={{16, }},
+		zlabel=32,
+		fill=\ConvColor,
+		opacity=1,
+		height=32,
+		width=16,
+		depth=32
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl10-east) 
+{Box={
+		name=bnl10,
+%		caption= 32 ,
+		xlabel={{16, }},
+		zlabel=32,
+		fill=\BNColor,
+		height=32,
+		width=16,
+		depth=32
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl10-east) 
+{Box={
+		name=act10,
+%		caption= cRelu,
+		xlabel={{32, }},
+		zlabel=32,
+		fill=\ConvReluColor,
+		height=32,
+		width=32,
+		depth=32
+	}
+};
+\pic[shift={(0.0,0,0)}] at (act10-east) 
+{Box={
+		name=pool10,
+%		caption= MaxPool,
+		xlabel={{32, }},
+		zlabel=31,
+		fill=\PoolColor,
+		height=31,
+		width=32,
+		depth=31
+	}
+};
+\pic[shift={(1,0,0)}] at (pool10-east) 
+{Box={
+		name=cvl11,
+%		caption= conv ,
+		xlabel={{8, }},
+		zlabel=31,
+		fill=\ConvColor,
+		opacity=1,
+		height=31,
+		width=8,
+		depth=31
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl11-east) 
+{Box={
+		name=bnl11,
+%		caption= 32 ,
+		xlabel={{8, }},
+		zlabel=31,
+		fill=\BNColor,
+		height=31,
+		width=8,
+		depth=31
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl11-east) 
+{Box={
+		name=act11,
+%		caption= cRelu,
+		xlabel={{16, }},
+		zlabel=31,
+		fill=\ConvReluColor,
+		height=31,
+		width=16,
+		depth=31
+	}
+};
+\pic[shift={(1,0,0)}] at (act11-east) 
+{Box={
+		name=cvl12,
+%		caption= conv ,
+		xlabel={{16, }},
+		zlabel=16,
+		fill=\ConvColor,
+		opacity=1,
+		height=16,
+		width=16,
+		depth=16
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl12-east) 
+{Box={
+		name=bnl12,
+%		caption= 16 ,
+		xlabel={{16, }},
+		zlabel=16,
+		fill=\BNColor,
+		height=16,
+		width=16,
+		depth=16
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl12-east) 
+{Box={
+		name=act12,
+%		caption= cRelu,
+		xlabel={{32, }},
+		zlabel=16,
+		fill=\ConvReluColor,
+		height=16,
+		width=32,
+		depth=16
+	}
+};
+\pic[shift={(0.0,0,0)}] at (act12-east) 
+{Box={
+		name=pool12,
+%		caption= MaxPool,
+		xlabel={{32, }},
+		zlabel=15,
+		fill=\PoolColor,
+		height=15,
+		width=32,
+		depth=15
+	}
+};
+\pic[shift={(1,0,0)}] at (pool12-east) 
+{Box={
+		name=cvl13,
+%		caption= conv ,
+		xlabel={{8, }},
+		zlabel=15,
+		fill=\ConvColor,
+		opacity=1,
+		height=15,
+		width=8,
+		depth=15
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl13-east) 
+{Box={
+		name=bnl13,
+%		caption= 16 ,
+		xlabel={{8, }},
+		zlabel=15,
+		fill=\BNColor,
+		height=15,
+		width=8,
+		depth=15
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl13-east) 
+{Box={
+		name=act13,
+%		caption= cRelu,
+		xlabel={{16, }},
+		zlabel=15,
+		fill=\ConvReluColor,
+		height=15,
+		width=16,
+		depth=15
+	}
+};
+\pic[shift={(1,0,0)}] at (act13-east) 
+{Box={
+		name=cvl14,
+%		caption= conv ,
+		xlabel={{16, }},
+		zlabel=8,
+		fill=\ConvColor,
+		opacity=1,
+		height=8,
+		width=16,
+		depth=8
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl14-east) 
+{Box={
+		name=bnl14,
+%		caption= 8 ,
+		xlabel={{16, }},
+		zlabel=8,
+		fill=\BNColor,
+		height=8,
+		width=16,
+		depth=8
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl14-east) 
+{Box={
+		name=act14,
+%		caption= cRelu,
+		xlabel={{32, }},
+		zlabel=8,
+		fill=\ConvReluColor,
+		height=8,
+		width=32,
+		depth=8
+	}
+};
+\pic[shift={(0.0,0,0)}] at (act14-east) 
+{Box={
+		name=pool14,
+%		caption= MaxPool,
+		xlabel={{32, }},
+		zlabel=7,
+		fill=\PoolColor,
+		height=7,
+		width=32,
+		depth=7
+	}
+};
+\pic[shift={(1,0,0)}] at (pool14-east) 
+{Box={
+		name=cvl15,
+%		caption= conv ,
+		xlabel={{8, }},
+		zlabel=7,
+		fill=\ConvColor,
+		opacity=1,
+		height=7,
+		width=8,
+		depth=7
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl15-east) 
+{Box={
+		name=bnl15,
+%		caption= 8 ,
+		xlabel={{16, }},
+		zlabel=7,
+		fill=\BNColor,
+		height=7,
+		width=16,
+		depth=7
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl15-east) 
+{Box={
+		name=act15,
+%		caption= cRelu,
+		xlabel={{16, }},
+		zlabel=7,
+		fill=\ConvReluColor,
+		height=7,
+		width=16,
+		depth=7
+	}
+};
+\pic[shift={(1,0,0)}] at (act15-east) 
+{Box={
+		name=cvl16,
+%		caption= conv ,
+		xlabel={{16, }},
+		zlabel=4,
+		fill=\ConvColor,
+		opacity=1,
+		height=4,
+		width=16,
+		depth=4
+	}
+};
+\pic[shift={(0,0,0)}] at (cvl16-east) 
+{Box={
+		name=bnl16,
+%		caption= 4 ,
+		xlabel={{16, }},
+		zlabel=4,
+		fill=\BNColor,
+		height=4,
+		width=16,
+		depth=4
+	}
+};
+\pic[shift={(0.0,0,0)}] at (bnl16-east) 
+{Box={
+		name=act16,
+%		caption= cRelu,
+		xlabel={{32, }},
+		zlabel=4,
+		fill=\ConvReluColor,
+		height=4,
+		width=32,
+		depth=4
+	}
+};
+\pic[shift={(0.0,0,0)}] at (act16-east) 
+{Box={
+		name=pool16,
+%		caption= MaxPool,
+		xlabel={{32, }},
+		zlabel=3,
+		fill=\PoolColor,
+		height=3,
+		width=32,
+		depth=3
+	}
+};
+
+\pic[shift={(2,0,0)}] at (pool16-east) 
+{RightBandedBox={
+		name=fc1,
+%		caption= 288,
+		xlabel={{"1",""}},
+		zlabel=288,
+		fill=\FcColor,
+%		bandfill=\FcReluColor,%
+		height=3,width=3,depth=200}
+};
+
+\pic[shift={(2,0,0)}] at (fc1-east) 
+{RightBandedBox={
+		name=fc2,
+		%		caption= 288,
+		xlabel={{"1",""}},
+		zlabel=20,
+		fill=\FcColor,
+		bandfill=\FcReluColor,%
+		height=3,width=3,depth=60}
+};
+
+\pic[shift={(2,0,0)}] at (fc2-east) 
+{RightBandedBox={
+		name=fc3,
+%		caption= $N_{class}$,
+		xlabel={{"1",""}},
+		zlabel=11,
+		fill=\FcColor,
+		bandfill=\SoftmaxColor,%
+		height=3,width=3,depth=30}
+};
+
+
+
+\draw [connection]  (pool16-east)        -- node {\midarrow} (fc1-west);
+\draw [connection]  (fc1-east)         -- node {\midarrow} (fc2-west);	
+\draw [connection]  (fc2-east)        -- node {\midarrow} (fc3-west);
+\draw [connection]  (act1-east)        -- node {\midarrow} (cvl2-west);
+\draw [connection]  (act2-east)        -- node {\midarrow} (cvl3-west);	
+\draw [connection]  (act3-east)        -- node {\midarrow} (cvl4-west);	
+\draw [connection]  (act4-east)        -- node {\midarrow} (cvl5-west);
+\draw [connection]  (act5-east)        -- node {\midarrow} (cvl6-west);	
+\draw [connection]  (pool6-east)        -- node {\midarrow} (cvl7-west);
+\draw [connection]  (act7-east)        -- node {\midarrow} (cvl8-west);	
+\draw [connection]  (pool8-east)        -- node {\midarrow} (cvl9-west);
+\draw [connection]  (act9-east)        -- node {\midarrow} (cvl10-west);	
+\draw [connection]  (pool10-east)        -- node {\midarrow} (cvl11-west);
+\draw [connection]  (act11-east)        -- node {\midarrow} (cvl12-west);	
+\draw [connection]  (pool12-east)        -- node {\midarrow} (cvl13-west);
+\draw [connection]  (act13-east)        -- node {\midarrow} (cvl14-west);	
+\draw [connection]  (pool14-east)        -- node {\midarrow} (cvl15-west);
+\draw [connection]  (act15-east)        -- node {\midarrow} (cvl16-west);	
+
+
+\end{tikzpicture}
+\end{document}
